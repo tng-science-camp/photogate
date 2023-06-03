@@ -4,7 +4,8 @@ import photogate_SC20
 
 class SpeedDisplay:
     def __init__(self):
-        self.photogate = photogate_SC20.Photogate_SC20(gate_0_pin=17, gate_1_pin=18, gate_distance=0.02)
+        self.photogate1 = photogate_SC20.Photogate_SC20(gate_0_pin=17, gate_1_pin=18, gate_distance=0.02)
+        self.photogate2 = photogate_SC20.Photogate_SC20(gate_0_pin=22, gate_1_pin=23, gate_distance=0.02)
 
         self.palette = [
             ('highest speed', 'dark red', 'black'),
@@ -74,9 +75,10 @@ class SpeedDisplay:
             raise urwid.ExitMainLoop()
         elif 'n' in keys or 'N' in keys:
             self.set_speed_track1(0.0)
-            self.photogate.reset()
-            self.set_speed_track1(self.photogate.measure_speed())
-            self.set_speed_track2(0.0)
+            self.photogate1.reset()
+            self.photogate2.reset()
+            self.set_speed_track1(self.photogate1.measure_speed())
+            self.set_speed_track2(self.photogate2.measure_speed())
         elif 'r' in keys or 'R' in keys:
             self.set_highest_speed_track1(0.0)
             self.set_highest_speed_track2(0.0)
