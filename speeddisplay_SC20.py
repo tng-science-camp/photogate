@@ -4,7 +4,7 @@ import photogate_SC20
 
 class SpeedDisplay:
     def __init__(self):
-        self.photogate = photogate_SC20.Photogate_SC20(gate_0_pin=17, gate_1_pin=27, gate_distance=0.02)
+        self.photogate = photogate_SC20.Photogate_SC20(gate_0_pin=17, gate_1_pin=18, gate_distance=0.02)
 
         self.palette = [
             ('highest speed', 'dark red', 'black'),
