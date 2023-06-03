@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import urwid
 import photogate_SC20
+from threading import Thread
 
 class SpeedDisplay:
     def __init__(self):
@@ -77,8 +78,8 @@ class SpeedDisplay:
             self.set_speed_track1(0.0)
             self.photogate1.reset()
             self.photogate2.reset()
-            self.set_speed_track1(self.photogate1.measure_speed())
-            self.set_speed_track2(self.photogate2.measure_speed())
+            Thread(self.set_speed_track1(self.photogate1.measure_speed())).start()
+            Thread(self.set_speed_track2(self.photogate2.measure_speed())).start()
         elif 'r' in keys or 'R' in keys:
             self.set_highest_speed_track1(0.0)
             self.set_highest_speed_track2(0.0)
